@@ -1,71 +1,9 @@
-function sayHi() {
-    alert("hi " + arguments[0] + " , " + arguments[1]);
-}
-
-sayHi('张飞', '你最近在干啥？');
-
-
-function howManyArgs() {
-    console.log('显示实际参数的个数：' + arguments.length);
-}
-
-
-howManyArgs('1', '2', 3, 4, 'build your dream');
-
-var person = new Object();
-
-function setname(obj) {
-    obj.name = '张飞';
-    obj = new Object();
-    obj.name = '王菲';
-}
-
-setname(person);
-
-console.log(person.name); // 张飞
-
-// ##################################
-
-
-var color = 'blue';
-function changeColor() {
-    var anotherColor = "red";
-
-    function swapColor() {
-        var tempColor = anotherColor;
-        anotherColor = color;
-        color = tempColor;
-        // 这里可以访问color,anotherColor,tempColor
-    }
-
-    swapColor();
-    // 这里可以访问color,anotherColor, 但不能访问 tempColor
-}
-// 这里能访问color , 但不能访问 anotherColor 和 tempColor.
-
-console.log(color);
-
-
-function displayInfo(args) {
-    var info = "";
-    if (typeof args.name === "string") {
-        info += "Name: " + args.name;
-    }
-    if (typeof args.age === "number") {
-        info += "Age: " + args.age;
-    }
-
-    console.log("arg===>" + info);
-}
-
-displayInfo({name: "张飞", age: 33});
-displayInfo({name: "王菲"});
-displayInfo({name: "北条麻妃", age: 38, "job": "actress"});
-
-
-var slave = {"first name": "stone", "last name": "Jack", "age": 22};
-
-console.log(slave['first name'] + " , " + slave.age);
+/**
+ * Created by cat on 2018/4/15.
+ * 数组 sort() 的案例
+ *
+ * 通过实现比较函数，对一组元素进行排序，分数越高越靠前；分数相同，年龄越小越靠前；分数、年龄都相同，按名字进行字符串默认排序。
+ */
 
 
 var stu1 = {
@@ -114,8 +52,8 @@ function compare(a, b) {
     } else {
         return 5;
     }
-}
-"".localeCompare("");
+} // todo:简单排序，仅仅通过分数进行排序
+
 function cmp(a, b) {
 
     if (a.grade > b.grade) {
@@ -132,7 +70,9 @@ function cmp(a, b) {
     } else {
         return 5;
     }
-}
+} // todo:复杂排序，先比较分数，然后是年龄，最后是名字字符串
+
+// langArr.sort(compare);
 langArr.sort(cmp);
 
 console.log("排序后：" + langArr);
