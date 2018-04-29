@@ -6,6 +6,10 @@
 function SuperType(name) {
     this.name = name;
     this.colors = ['red', 'blue', 'green'];
+    console.log("SuperType() 中的 this 是 SuperType? " + (this instanceof SuperType));
+    if (window.name) {
+        console.log("www " + window.name);
+    }
 }
 
 SuperType.prototype.sayName = function () {
@@ -35,7 +39,7 @@ s1.sayName();
 s1.sayAge();
 
 
-var s2 = new SubType('Ann', 33);
-console.log(s2.colors);
-s2.sayName();
-s2.sayAge();
+// var s2 = new SubType('Ann', 33);
+// console.log(s2.colors);
+// s2.sayName();
+// s2.sayAge();
