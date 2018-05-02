@@ -7,9 +7,6 @@ function SuperType(name) {
     this.name = name;
     this.colors = ['red', 'blue', 'green'];
     console.log("SuperType() 中的 this 是 SuperType? " + (this instanceof SuperType));
-    if (window.name) {
-        console.log("www " + window.name);
-    }
 }
 
 SuperType.prototype.sayName = function () {
