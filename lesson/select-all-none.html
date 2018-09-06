@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按行改变表格颜色</title>
+
+    <script type="text/javascript">
+
+
+        window.onload = function () {
+
+            var i = 0;
+            var tbody = document.getElementsByTagName("tbody")[0];
+
+            console.log("tbody===" + tbody);
+
+            tbody.style.color = "#000";
+            var trList = tbody.getElementsByTagName("tr");
+            for (i = 0; i < trList.length; i++) {
+                var tr = trList[i];
+                if (i % 2 === 0) {
+                    tr.style.backgroundColor = "#1266ff";
+                } else {
+                    tr.style.backgroundColor = "#339800";
+                }
+                tr.onmouseover = function () {
+                    this.style.color = "white";
+                };
+                tr.onmouseout = function () {
+                    this.style.color = "#000";
+                };
+            }
+
+            var tHead = document.getElementsByTagName("thead")[0];
+            var checkBox = tHead.getElementsByTagName("input")[0];
+            var checkList = tbody.getElementsByTagName("input"); // tbody 中 全部的checkbox
+
+            var selectedCount = 0; // 统计 item 被选中的个数
+            // 1. 让所有 checkbox 不能被点击
+            var inputs = document.getElementsByTagName("input");
+            for (i = 0; i < inputs.length; i++) {
+                inputs[i].disabled = true;
+            }
+            // 2. 设置 thead 的 点击
+            document.getElementById("select_all")
+                .onclick = function () {
+                checkBox.checked = checkBox.checked !== true;
+                // 根据 checkbox.checked 的状态，去设置全选。全不选
+                for (i = 0; i < checkList.length; i++) {
+                    checkList[i].checked = checkBox.checked;
+                    if (checkList[i].checked) {
+                        selectedCount += 1;
+                    } else {
+                        selectedCount -= 1;
+                    }
+                }
+            };
+
+            // 4. 设置 每个 item 的点击逻辑-- > 反向联动到全选按钮
+            var checkItems = document.getElementsByClassName("item_check");
+
+            for (i = 0; i < checkItems.length; i++) {
+                // https://www.jb51.net/article/87084.htm 方案4
+                (function () {
+                    var temp = i; // 调用时局部变量
+                    checkItems[temp].onclick = function () {
+                        console.log("inner click.." + temp);
+                        checkList[temp].checked = !checkList[temp].checked;
+                        // 记录选中的个数
+                        if (checkList[temp].checked) {
+                            selectedCount += 1;
+                        } else {
+                            selectedCount -= 1;
+                        }
+
+                        if (selectedCount === checkList.length) {
+                            // 全选了
+                            checkBox.checked = true;
+                            console.log("");
+                        } else {
+                            // 不是全选了
+                            checkBox.checked = false;
+                        }
+                    };
+                })();
+            }
+        };
+
+    </script>
+</head>
+<body>
+
+<table border="1">
+    <thead>
+    <tr>
+        <td id="select_all">
+            <label>全选
+                <input type="checkbox">
+            </label>
+        </td>
+        <td>编号</td>
+        <td>姓名</td>
+        <td>年龄</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="item_check">
+            <label>
+                <input type="checkbox">
+            </label>
+        </td>
+        <td>1</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td class="item_check">
+            <label>
+                <input type="checkbox">
+            </label>
+        </td>
+        <td>2</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td class="item_check">
+            <label>
+                <input type="checkbox">
+            </label>
+        </td>
+        <td>3</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td class="item_check">
+            <label>
+                <input type="checkbox">
+            </label>
+        </td>
+        <td>1</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td class="item_check">
+            <label>
+                <input type="checkbox">
+            </label>
+        </td>
+        <td>1</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td class="item_check">
+            <label>
+                <input type="checkbox">
+            </label>
+        </td>
+        <td>1</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td class="item_check">
+            <label>
+                <input type="checkbox">
+            </label>
+        </td>
+        <td>1</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td class="item_check">
+            <label>
+                <input type="checkbox">
+            </label>
+        </td>
+        <td>1</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
