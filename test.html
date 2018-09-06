@@ -4,31 +4,54 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <script type="application/x-javascript">
 
-        //        console.log("sum===> "+sum(1 + 2));
-        function btn1() {
-            alert("sum===> " + sum(1 + 2));
-            function sum(num1, num2) {
-                return num1 + num2;
-            }
+    <style type="text/css">
+        h3, img {
+            display: none;
+            height: 40%;
+            /*width: 40%;*/
+            width: 300pt;
         }
-        //        console.log("add<<<<<< "+add(1, 1));
-        function btn2() {
-            alert("sum===> " + add(1 + 2));
-            var add = function (num1, num2) {
-                return num1 + num2;
-            }
+    </style>
+    <script type="text/javascript">
+        var showNum = 0;
+        var hideNUm = 0;
+        function loadAD() {
+            showNum = setTimeout("showAD()", 2000);
+        }
+        function showAD() {
+            document.getElementById("img_id").style.display = "block";
+            document.getElementById("h3_id").style.display = "block";
+            hideNUm = setTimeout("hideAD()", 2000);
+        }
+        function hideAD() {
+            document.getElementById("img_id").style.display = "none";
+            document.getElementById("h3_id").style.display = "none";
+            clearTimeout(showNum);
+        }
 
+        window.onload = function () {
+            loadAD();
+        };
+
+        window.onunload = function () {
+            clearTimeout(hideNUm);
         }
+
     </script>
 </head>
 <body>
-<input style="color: inherit" type="button" onclick="btn1(1,2)" value="button1">
 
-<input type="button" onclick="btn2(1,2)" value="button2">
+<img src="img/img01.png" id="img_id">
+<h3 id="h3_id">这是广告</h3>
+<p>我是段落文章，段落了。</p>
+<p>我是段落文章，段落了。</p>
+<p>我是段落文章，段落了。</p>
+<p>我是段落文章，段落了。</p>
+<p>我是段落文章，段落了。</p>
+<p>我是段落文章，段落了。</p>
+<p>我是段落文章，段落了。</p>
+<p>我是段落文章，段落了。</p>
+<p>我是段落文章，段落了。</p>
 </body>
-<script type="application/x-javascript">
-
-</script>
 </html>

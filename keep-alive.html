@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我不断刷新自己</title>
+
+
+</head>
+<body>
+
+<h1>我是标题</h1>
+
+<p>这是一个严肃的段落<span id="span_time" style="color: coral">我是当前时间</span></p>
+
+</body>
+<script type="text/javascript">
+    var eleSpan = document.getElementById("span_time");
+
+    console.log("ele span===>" + eleSpan);
+    window.onload = function () {
+
+        console.log(new Date());
+        setInterval(function () {
+//            eleSpan.text = new Date().toLocaleString();
+            var date = new Date();
+            console.log(date + " ####");
+            if (eleSpan) {
+                if (date.getSeconds() % 5 === 0) {
+                    eleSpan.style.color = "green"
+                } else {
+                    eleSpan.style.color = 'black'
+                }
+                eleSpan.textContent = date + " javascript";
+                console.log(date + " xyz");
+            }
+
+        }, 1000);
+    };
+</script>
+</html>
