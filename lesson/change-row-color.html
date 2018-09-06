@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按行改变表格颜色</title>
+
+    <script type="text/javascript">
+
+
+        window.onload = function () {
+
+            var tbody = document.getElementsByTagName("tbody")[0];
+
+            console.log(tbody);
+
+            var trList = tbody.getElementsByTagName("tr");
+            for (var i = 0; i < trList.length; i++) {
+                var tr = trList[i];
+                if (i % 2 === 0) {
+                    tr.style.backgroundColor = "#1266ff";
+                } else {
+                    tr.style.backgroundColor = "#339800";
+                }
+            }
+        };
+
+
+    </script>
+</head>
+<body>
+
+<table border="1">
+    <thead>
+    <tr>
+        <td>编号</td>
+        <td>姓名</td>
+        <td>年龄</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>23</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
