@@ -13,6 +13,7 @@
 
             console.log(tbody);
 
+            tbody.style.color="#000";
             var trList = tbody.getElementsByTagName("tr");
             for (var i = 0; i < trList.length; i++) {
                 var tr = trList[i];
@@ -21,9 +22,14 @@
                 } else {
                     tr.style.backgroundColor = "#339800";
                 }
+                tr.onmouseover = function () {
+                    this.style.color = "white";
+                };
+                tr.onmouseout = function () {
+                    this.style.color = "#000";
+                };
             }
         };
-
 
     </script>
 </head>
