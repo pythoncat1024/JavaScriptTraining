@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用jQuery</title>
+
+    <style type="text/css">
+        img {
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.8.3.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log("jquery ready...");
+        });
+        $(function () {
+            console.log("jquery ready too...");
+        }); // 等同于 $(document).ready(func);
+
+        window.onload = function () {
+            console.log("window onlaod...");
+
+            $("#btn_01").click(function () {
+//                $("#p01").text("我爱你们"); // ok --> 给元素赋文本值
+//                $("#p01").html("a b c d e"); // ok too --> 给元素赋文本值
+                var $adImg = $("#ad_img");
+                $adImg.show("normal");
+                $adImg.fadeIn(1500);
+
+                var timeoutHide = setTimeout(function () {
+                    var $adImg2 = $("#ad_img");
+                    $adImg2.hide("normal");
+                    $adImg2.fadeOut(3500);
+                    clearTimeout(timeoutHide);
+                }, 3000);
+            });
+
+            $("#ad_img").hide(); // 默认隐藏
+
+            var timeoutShow = setTimeout(function () {
+                var $adImg = $("#ad_img");
+                $adImg.show("normal");
+                $adImg.fadeIn(1500);
+                clearTimeout(timeoutShow);
+            }, 1000);
+
+
+            var timeoutHide = setTimeout(function () {
+                var $adImg2 = $("#ad_img");
+                $adImg2.hide("normal");
+                $adImg2.fadeOut(3500);
+                clearTimeout(timeoutHide);
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+<p id="p01">这是一个正经的页面，但是会突然弹出一个广告。。。</p>
+<img id="ad_img" src="../img/img01.png" alt="我是广告">
+
+<input type="button" id="btn_01" value="我的心好冷">
+</body>
+</html>
