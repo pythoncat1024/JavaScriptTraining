@@ -68,6 +68,7 @@
                 //当elem下还存在子节点时 循环继续
                 secondSelect.removeChild(secondSelect.firstChild);
             }
+//            secondSelect.options.length = 0; # 这样也行，但是会被警告
             // 2. 根据选中的省份，进行动态填充
             var index = firstSelect.selectedIndex;
             var currentCityArr = secondArr[index]; // 当前选中的省 对应的 city(s) 的数组
