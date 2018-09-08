@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery 全选 全不选 页面</title>
+    <style type="text/css">
+        #container {
+            margin: 40px auto;
+            /*background-color: yellowgreen;*/
+            width: 80%;
+            height: 600px;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        thead {
+            text-align: center;
+            font-weight: 900;
+            height: 40px;
+        }
+
+        thead input {
+            margin: 0 10%;
+            /*height: 30px;*/
+        }
+
+        tbody {
+            text-align: center;
+        }
+
+        input[type=checkbox] {
+            /*disabled:true*/ /*这样没用*/
+        }
+    </style>
+
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.8.3.js"></script>
+
+    <script type="text/javascript">
+
+        function createTable() {
+            var headArr = ['全选', '编号', '姓名', '年龄'];
+            var containerDiv = $("#container").get(0);
+            var table = document.createElement("table");
+
+            table['border'] = 1;
+            // 创建 thead
+            var thead = document.createElement("thead");
+//            thead.setAttribute("height","40px"); // 无效
+            var trLine = document.createElement("tr");
+            var cb = document.createElement("input"); // 全选框里面的 checkbox
+            console.log("abc --+++" + headArr);
+            var selectedCount = 0;
+            for (var index = 0; index < headArr.length; index++) {
+                (function () {
+                    var pos = index;
+                    var td = document.createElement("td");
+                    td.setAttribute("class", "th_td" + pos);
+                    var text = document.createTextNode(headArr[pos]);
+                    td.appendChild(text);
+                    if (pos === 0) {
+                        // 全选的 td 里面添加一个 checkbox
+                        cb.disabled = true;
+                        cb.setAttribute("type", "checkbox");
+                        td.appendChild(cb);
+
+                        td.onclick = function () {
+                            // 全选 td  的点击时间
+                            cb.checked = !cb.checked;
+                            var itemCheckList = tbody.getElementsByTagName("input");
+                            for (i = 0; i < itemCheckList.length; i++) {
+                                itemCheckList[i].checked = cb.checked;
+                                if (itemCheckList[i].checked) {
+                                    selectedCount = itemCheckList.length;
+                                } else {
+                                    selectedCount =0;
+                                }
+                            }
+                            console.log("--全选按钮点击 selectedCount..." + selectedCount);
+                        }
+                    }
+                    trLine.appendChild(td);
+//                    console.log("abc --"+pos);
+                })();
+                console.log("abc --" + index);
+
+            }
+            thead.appendChild(trLine);
+            table.appendChild(thead);
+            containerDiv.appendChild(table);
+            // 创建 tbody
+            var tbody = document.createElement("tbody");
+            for (index = 0; index < 10; index++) {
+                (function () {
+                    var p_index = index;
+                    var trItem = document.createElement("tr");
+                    var checkbox = document.createElement("input");
+                    checkbox.setAttribute("type", "checkbox");
+                    checkbox.disabled = true;
+//                    checkbox.disabled(true);
+                    var td1 = document.createElement("td");
+                    td1.appendChild(checkbox);
+                    var td2 = document.createElement("td");
+                    var textNumber = document.createTextNode("" + p_index);
+                    td2.appendChild(textNumber);
+                    var td3 = document.createElement("td");
+                    var textName = document.createTextNode("name" + p_index);
+                    td3.appendChild(textName);
+                    var td4 = document.createElement("td");
+                    var textAge = document.createTextNode("" + (20 + p_index));
+                    td4.appendChild(textAge);
+                    trItem.appendChild(td1);
+                    trItem.appendChild(td2);
+                    trItem.appendChild(td3);
+                    trItem.appendChild(td4);
+                    tbody.appendChild(trItem);
+
+                    td1.onclick = function () {
+                        console.log("td1. onclick...");
+                        checkbox.checked = !checkbox.checked;
+                        // 记录选中的个数
+                        if (checkbox.checked) {
+                            selectedCount += 1;
+                        } else {
+                            selectedCount -= 1;
+                        }
+                        console.log("selected count=="+selectedCount);
+                        if (selectedCount === 10) {
+                            // 全选了
+                            cb.checked = true;
+
+                        } else {
+                            // 不是全选了
+                            cb.checked = false;
+                        }
+                    }
+                })();
+                // table 全部创建完成了
+            }
+            table.appendChild(tbody);
+        }
+        $(function () {
+            console.log("全选-全不选 页面加载...");
+            createTable();
+            console.log("全选-全不选 页面加载...###");
+        });
+
+    </script>
+</head>
+<body>
+
+<div id="container">
+
+</div>
+</body>
+</html>

@@ -49,9 +49,9 @@
                 for (i = 0; i < checkList.length; i++) {
                     checkList[i].checked = checkBox.checked;
                     if (checkList[i].checked) {
-                        selectedCount += 1;
+                        selectedCount = checkList.length;
                     } else {
-                        selectedCount -= 1;
+                        selectedCount = 0;
                     }
                 }
             };
