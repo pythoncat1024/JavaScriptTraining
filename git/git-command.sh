@@ -37,4 +37,4 @@ git blame --since=2018-07-23 -- abc.txt # 时间过滤
 # -d 移除未追踪的目录
 # -n 预演，并不真正执行
 # -x 移除 .gitignore 里面忽略的文件
-# -n 与 -dry-run 都是预演，不是真的执行
+# -n 与 --dry-run 都是预演，不是真的执行
