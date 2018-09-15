@@ -38,3 +38,9 @@ git blame --since=2018-07-23 -- abc.txt # 时间过滤
 # -n 预演，并不真正执行
 # -x 移除 .gitignore 里面忽略的文件
 # -n 与 --dry-run 都是预演，不是真的执行
+git commit --allow-empty # 本地没有任何修改，也可以提交
+git branch --track lesson origin/dev # 新建一个分支追踪到远程分支
+git branch --set-upstream-to=origin/master lesson # 将本地分支追踪到某个远程分支
+git branch --unset-upstream lesson # 放弃本地某个分支对远程的追踪
+git branch -vv # 查看本地分支与远程分支的关联关系
+git branch --contains=fd79483 # 查看某个commit 包含在哪些分支上面
