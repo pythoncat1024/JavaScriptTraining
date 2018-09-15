@@ -1,5 +1,6 @@
 #!/bin/bash
 pwd
+git help checkout 查看 git checkout 命令帮助
 git diff --name-only # 只显示有差异的文件名，并且是处于未追踪的状态的
 git diff --cached # 显示差异，包含已经被 git add 的文件
 git diff --name-status # 只显示有差异的文件名 和文件状态，并且是处于未追踪的状态的
@@ -38,9 +39,30 @@ git blame --since=2018-07-23 -- abc.txt # 时间过滤
 # -n 预演，并不真正执行
 # -x 移除 .gitignore 里面忽略的文件
 # -n 与 --dry-run 都是预演，不是真的执行
+git clean -n # 预演，看看会删除哪些文件
+git clean -f # 强制删除当前分支下所有未追踪的文件
 git commit --allow-empty # 本地没有任何修改，也可以提交
 git branch --track lesson origin/dev # 新建一个分支追踪到远程分支
 git branch --set-upstream-to=origin/master lesson # 将本地分支追踪到某个远程分支
 git branch --unset-upstream lesson # 放弃本地某个分支对远程的追踪
 git branch -vv # 查看本地分支与远程分支的关联关系
 git branch --contains=fd79483 # 查看某个commit 包含在哪些分支上面
+git push -u origin dev:dev # 根据本地 dev 分支，创建一个远程 dev 分支
+
+git branch -r -d origin/lesson # 删除远程分支
+git push origin :lesson # 提交删除，让服务器上面的该分支被删除
+# git checkout 用来切换分支，或者检出内容到工作目录
+git checkout branch_name # 切换到其他分支
+# 如果当前:分支有文件改动(非新增)，[看 git版本，有的版本不然切换，有的可以切换，而且保留改动]
+git checkout -f branch_name # 如果当前分支有文件改动，则强制取消改动，然后切换到目标分支
+git checkout -b dev origin/dev # 建立新分支并追踪
+git checkout --orphan=br_name start_point # 从某个起始点[可以是分支名，tag名，或者commitID,HEAD] 建立一个孤立的分支
+# 孤立的分支的意思就是当前分支和之前的分支没有任何关联。(此时也没有任何的commit,不过所有的文件和start_point的代码是完全一样的)
+# 孤立分支的作用：比如你偷了一套代码。你就可以建立一个孤立分支，让别人没有机会根据提交记录发现这套代码是你偷的
+git checkout -- file # 将文件恢复到改动前的状态--> 恢复到暂存区的文件状态
+git checkout . # 用点号，就讲本地全部未提交的修改全部恢复了。
+#修改某次提交信息：
+git commit —amend -c <commit ID>
+# 如果 git add 了多个文件，但是只想 commit 某个文件
+git commit -- file_path
+
