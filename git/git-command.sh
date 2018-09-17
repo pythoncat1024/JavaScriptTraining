@@ -53,7 +53,7 @@ git branch -r -d origin/lesson # 删除远程分支
 git push origin :lesson # 提交删除，让服务器上面的该分支被删除
 # git checkout 用来切换分支，或者检出内容到工作目录
 git checkout branch_name # 切换到其他分支
-# 如果当前:分支有文件改动(非新增)，[看 git版本，有的版本不然切换，有的可以切换，而且保留改动]
+# 如果当前分支有文件改动(非新增)，[看 git版本，有的版本不然切换，有的可以切换，而且保留改动]
 git checkout -f branch_name # 如果当前分支有文件改动，则强制取消改动，然后切换到目标分支
 git checkout -b dev origin/dev # 建立新分支并追踪
 git checkout --orphan=br_name start_point # 从某个起始点[可以是分支名，tag名，或者commitID,HEAD] 建立一个孤立的分支
