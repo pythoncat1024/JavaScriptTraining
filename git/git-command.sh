@@ -65,4 +65,8 @@ git checkout . # 用点号，就讲本地全部未提交的修改全部恢复了
 git commit —amend -c <commit ID>
 # 如果 git add 了多个文件，但是只想 commit 某个文件
 git commit -- file_path
+git cherry-pick commitID # 将某个其他分支的 commit 添加到当前分支，生成一个新的commit 记录
+git cherry-pick -n commitID # 仅仅把对应的修改应用过来，需要手动commit
+git cherry-pick commitID^..commitID2 # 把 ccommit1 - commit2 之间的全部提交应用到当前分支
+git reset HEAD file_path # 把 git add 的文件回退到 add 之前的状态
 
